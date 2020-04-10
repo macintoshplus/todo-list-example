@@ -13,7 +13,6 @@ class TodoListType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('user')
         ;
     }
 

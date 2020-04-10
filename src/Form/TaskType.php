@@ -14,7 +14,6 @@ class TaskType extends AbstractType
         $builder
             ->add('label')
             ->add('done')
-            ->add('list')
         ;
     }
 

@@ -7,5 +7,5 @@
 
     {{ include('task/_form.html.twig') }}
 
-    <a href="{{ path('task_index') }}">back to list</a>
+    <a class="btn btn-secondary" href="{{ path('todo_list_show', {'id': todo_list.id}) }}">back to list</a>
 {% endblock %}

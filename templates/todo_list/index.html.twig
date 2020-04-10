@@ -3,7 +3,12 @@
 {% block title %}TodoList index{% endblock %}
 
 {% block body %}
-    <h1>TodoList index</h1>
+    <div class="row">
+        <div class="col"><h1>Your todo list</h1></div>
+        <div class="col-2 text-right"><a class="btn btn-outline-primary" href="{{ path('todo_list_new') }}">Add new todo list</a></div>
+    </div>
+
+
 
     <table class="table">
         <thead>
@@ -18,9 +23,9 @@
             <tr>
                 <td>{{ todo_list.id }}</td>
                 <td>{{ todo_list.name }}</td>
-                <td>
-                    <a href="{{ path('todo_list_show', {'id': todo_list.id}) }}">show</a>
-                    <a href="{{ path('todo_list_edit', {'id': todo_list.id}) }}">edit</a>
+                <td class="btn-group">
+                    <a class="btn btn-info" href="{{ path('todo_list_show', {'id': todo_list.id}) }}">show</a>
+                    <a class="btn btn-secondary" href="{{ path('todo_list_edit', {'id': todo_list.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +36,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('todo_list_new') }}">Create new</a>
 {% endblock %}

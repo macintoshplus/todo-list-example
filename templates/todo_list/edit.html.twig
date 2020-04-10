@@ -7,7 +7,7 @@
 
     {{ include('todo_list/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('todo_list_index') }}">back to list</a>
+    <a class="btn btn-secondary" href="{{ path('todo_list_index') }}">back to list</a>
 
     {{ include('todo_list/_delete_form.html.twig') }}
 {% endblock %}
