@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Context;
 
-
 use App\Tests\Functional\Page\LoginPage;
 use Behat\Behat\Context\Context;
 
@@ -34,6 +33,9 @@ class LoginContext implements Context
 
     /**
      * @When /^je me connecte en tant que "([^"]+)" avec le mot de passe "([^"]+)"$/
+     *
+     * @param mixed $email
+     * @param mixed $password
      */
     public function connexion($email, $password)
     {

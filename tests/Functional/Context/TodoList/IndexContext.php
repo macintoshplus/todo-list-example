@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Context\TodoList;
 
-
 use App\Tests\Functional\Page\TodoList\IndexPage;
 use Behat\Behat\Context\Context;
 

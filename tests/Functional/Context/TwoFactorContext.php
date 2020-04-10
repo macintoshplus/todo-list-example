@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Context;
 
-
 use App\Tests\Functional\Page\TwoFactorPage;
 use Behat\Behat\Context\Context;
 
@@ -19,7 +18,7 @@ class TwoFactorContext implements Context
      */
     private $twoFactorPage;
 
-    public function __construct( TwoFactorPage $twoFactorPage)
+    public function __construct(TwoFactorPage $twoFactorPage)
     {
         $this->twoFactorPage = $twoFactorPage;
     }

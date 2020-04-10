@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Setup;
 
-
 use App\Entity\User;
 use Behat\Behat\Context\Context;
 use Doctrine\Persistence\ObjectManager;
@@ -34,6 +33,9 @@ class UserContext implements Context
     /**
      * @Given the user :email is registred with the password :password
      * @Given /^l'utilisateur "([^"]+)" est enregsitré avec le mot de passe "([^"]+)"$/
+     *
+     * @param mixed $email
+     * @param mixed $password
      */
     public function registerUser($email, $password)
     {
@@ -43,5 +45,4 @@ class UserContext implements Context
         $this->objectManager->persist($user);
         $this->objectManager->flush();
     }
-
 }

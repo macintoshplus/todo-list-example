@@ -17,7 +17,8 @@ class TwoFactorPage extends SymfonyPage
         return 'app_two_factor';
     }
 
-    public function sendCode($code) {
+    public function sendCode($code)
+    {
         $this->verify();
 
         $this->getDocument()->fillField('password', $code);

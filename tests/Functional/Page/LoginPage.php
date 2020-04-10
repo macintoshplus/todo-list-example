@@ -8,18 +8,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Page;
 
-
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPage;
 
 class LoginPage extends SymfonyPage
 {
-
     public function getRouteName(): string
     {
         return 'app_login';
     }
 
-    public function login($user, $password) {
+    public function login($user, $password)
+    {
         $this->open();
         $this->getDocument()->fillField('email', $user);
         $this->getDocument()->fillField('password', $password);

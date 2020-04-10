@@ -47,3 +47,11 @@ Open the link in your favorite web browser.
 The login uses a two-factor authentication. When your browser is redirected to code form (after username/password form) read the dump value in the Symfony debug bar.
 This code is the two-factor code.
 
+# Run tests
+
+Open a terminal and run their command after the install step :
+
+```shell script
+$ APP_ENV=test bin/console doctrine:migration:migrate
+$ vendor/bin/behat
+```
