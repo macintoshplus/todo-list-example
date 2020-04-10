@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Security\AppTwoFactorAuthenticator;
+use App\Security\CodeGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -31,12 +32,12 @@ class SecurityController extends AbstractController
     /**
      * @Route("/two_factor", name="app_two_factor")
      */
-    public function twoFactor(SessionInterface $session, AuthenticationUtils $authenticationUtils): Response
+    public function twoFactor(SessionInterface $session, CodeGeneratorInterface $codeGenerator, AuthenticationUtils $authenticationUtils): Response
     {
         $error = $authenticationUtils->getLastAuthenticationError();
         if ($session->get(AppTwoFactorAuthenticator::CODE_SESSION_KEY) === null) {
             $error = null;
-            $session->set(AppTwoFactorAuthenticator::CODE_SESSION_KEY, (string) dump(random_int(1000, 9999)));
+            $session->set(AppTwoFactorAuthenticator::CODE_SESSION_KEY, dump($codeGenerator->generate()));
             $session->set(AppTwoFactorAuthenticator::TIMEOUT_SESSION_KEY, time() + (60 * 5));
             $session->set(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 1);
         }

@@ -85,6 +85,11 @@ class User implements UserInterface
         return $this->password;
     }
 
+    public function setPassword(string $password): void
+    {
+        $this->password = $password;
+    }
+
     /**
      * @inheritDoc
      */
