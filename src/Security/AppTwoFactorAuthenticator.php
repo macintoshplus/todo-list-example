@@ -111,6 +111,12 @@ class AppTwoFactorAuthenticator extends AbstractFormLoginAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
+        $request->getSession()->remove('need_auth_two');
+        $request->getSession()->remove(self::USER_SESSION_KEY);
+        $request->getSession()->remove(self::CODE_SESSION_KEY);
+        $request->getSession()->remove(self::TIMEOUT_SESSION_KEY);
+        $request->getSession()->remove(self::COUNT_SESSION_KEY);
+
         if ($targetPath = $this->getTargetPath($request->getSession(), $providerKey)) {
             return new RedirectResponse($targetPath);
         }
