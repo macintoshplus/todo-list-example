@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -14,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/todo")
  */
-class TodoListController extends AbstractController
+final class TodoListController extends AbstractController
 {
     /**
      * @Route("/", name="todo_list_index", methods={"GET"})

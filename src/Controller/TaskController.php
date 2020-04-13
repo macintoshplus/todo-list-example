@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Controller;
 
@@ -16,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/todo/{list}/task")
  */
-class TaskController extends AbstractController
+final class TaskController extends AbstractController
 {
 
     /**

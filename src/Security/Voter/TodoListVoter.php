@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Security\Voter;
 
@@ -7,7 +8,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class TodoListVoter extends Voter
+final class TodoListVoter extends Voter
 {
     const EDIT = 'LIST_EDIT';
     const ADD = 'LIST_ADD';
