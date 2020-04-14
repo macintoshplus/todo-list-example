@@ -17,7 +17,7 @@ final class TaskVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        return in_array($attribute, [self::ADD, self::EDIT, self::VIEW, self::DELETE])
+        return \in_array($attribute, [self::ADD, self::EDIT, self::VIEW, self::DELETE])
             && $subject instanceof Task;
     }
 

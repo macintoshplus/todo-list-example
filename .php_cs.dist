@@ -11,6 +11,7 @@ return PhpCsFixer\Config::create()
         '@PSR2' => true,
         'declare_strict_types' => true,
         'array_syntax' => ['syntax' => 'short'],
+        'native_function_invocation' => ['include'=>['@compiler_optimized']]
     ])
     ->setRiskyAllowed(true)
     ->setFinder(
