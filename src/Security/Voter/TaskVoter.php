@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Security\Voter;
@@ -17,7 +18,7 @@ final class TaskVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        return \in_array($attribute, [self::ADD, self::EDIT, self::VIEW, self::DELETE])
+        return \in_array($attribute, [self::ADD, self::EDIT, self::VIEW, self::DELETE], true)
             && $subject instanceof Task;
     }
 
@@ -28,7 +29,7 @@ final class TaskVoter extends Voter
         if (!$user instanceof UserInterface) {
             return false;
         }
-        /** @var Task $subject */
+        // @var Task $subject
         return $subject->getList() !== null &&
             $subject->getList()->getUser() !== null &&
             ($user->getId() === $subject->getList()->getUser()->getId())

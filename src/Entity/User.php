@@ -68,9 +68,8 @@ class User implements UserInterface
         $this->email = $email;
     }
 
-
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getRoles()
     {
@@ -78,7 +77,7 @@ class User implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getPassword()
     {
@@ -91,7 +90,7 @@ class User implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getSalt()
     {
@@ -99,7 +98,7 @@ class User implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getUsername()
     {
@@ -107,7 +106,7 @@ class User implements UserInterface
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function eraseCredentials()
     {

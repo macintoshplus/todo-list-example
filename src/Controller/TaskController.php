@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -6,9 +7,7 @@ namespace App\Controller;
 use App\Entity\Task;
 use App\Entity\TodoList;
 use App\Form\TaskType;
-use App\Repository\TaskRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +18,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class TaskController extends AbstractController
 {
-
     /**
      * @Route("/new", name="task_new", methods={"GET","POST"})
      * @IsGranted("LIST_ADD_TASK", subject="list")
@@ -37,7 +35,7 @@ final class TaskController extends AbstractController
             $entityManager->persist($task);
             $entityManager->flush();
 
-            return $this->redirectToRoute('todo_list_show', ['id'=>$list->getId()]);
+            return $this->redirectToRoute('todo_list_show', ['id' => $list->getId()]);
         }
 
         return $this->render('task/new.html.twig', [
@@ -71,7 +69,7 @@ final class TaskController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('todo_list_show', ['id'=>$list->getId()]);
+            return $this->redirectToRoute('todo_list_show', ['id' => $list->getId()]);
         }
 
         return $this->render('task/edit.html.twig', [
@@ -93,6 +91,6 @@ final class TaskController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('todo_list_show', ['id'=>$list->getId()]);
+        return $this->redirectToRoute('todo_list_show', ['id' => $list->getId()]);
     }
 }

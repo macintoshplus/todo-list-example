@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Security;
@@ -99,8 +100,10 @@ final class AppLoginAuthenticator extends AbstractFormLoginAuthenticator
     {
         if ($this->encoder->getEncoder($user)->isPasswordValid($user->getPassword(), $credentials['password'], null)) {
             $this->session->set('need_auth_two', true);
+
             return false;
         }
+
         return false;
     }
 
@@ -118,6 +121,7 @@ final class AppLoginAuthenticator extends AbstractFormLoginAuthenticator
         if ($this->session->get('need_auth_two', false) === true) {
             return $this->urlGenerator->generate(AppTwoFactorAuthenticator::LOGIN_ROUTE);
         }
+
         return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }

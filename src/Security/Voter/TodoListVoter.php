@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Security\Voter;
@@ -18,7 +19,7 @@ final class TodoListVoter extends Voter
 
     protected function supports($attribute, $subject)
     {
-        return \in_array($attribute, [self::ADD, self::EDIT, self::VIEW, self::DELETE, self::ADD_TASK])
+        return \in_array($attribute, [self::ADD, self::EDIT, self::VIEW, self::DELETE, self::ADD_TASK], true)
             && $subject instanceof TodoList;
     }
 

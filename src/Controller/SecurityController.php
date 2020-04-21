@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -42,6 +43,7 @@ final class SecurityController extends AbstractController
             $session->set(AppTwoFactorAuthenticator::TIMEOUT_SESSION_KEY, time() + (60 * 5));
             $session->set(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 1);
         }
+
         return $this->render('security/two_factor.html.twig', ['error' => $error]);
     }
 
