@@ -39,15 +39,17 @@ final class TwoFactorCredentialSubscriber implements EventSubscriberInterface
     {
         /** @var Passport $passport */
         $passport = $event->getPassport();
-        if ($passport->hasBadge(TwoFactorCredentials::class)) {
-            $badge = $passport->getBadge(TwoFactorCredentials::class);
-            if ($badge->getPassword() === $this->session->get(AppTwoFactorAuthenticator::CODE_SESSION_KEY, null)) {
-                $badge->markResolved();
-                return;
-            }
-
-            $this->session->set(AppTwoFactorAuthenticator::COUNT_SESSION_KEY,
-                $this->session->get(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 0) + 1);
+        if ($passport->hasBadge(TwoFactorCredentials::class) === false) {
+            return;
         }
+        $badge = $passport->getBadge(TwoFactorCredentials::class);
+        if ($badge->getPassword() === $this->session->get(AppTwoFactorAuthenticator::CODE_SESSION_KEY, null)) {
+            $badge->markResolved();
+            return;
+        }
+
+        $this->session->set(AppTwoFactorAuthenticator::COUNT_SESSION_KEY,
+            $this->session->get(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 0) + 1);
+
     }
 }

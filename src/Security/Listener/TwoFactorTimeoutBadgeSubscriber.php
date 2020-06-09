@@ -44,7 +44,6 @@ final class TwoFactorTimeoutBadgeSubscriber implements EventSubscriberInterface
             $this->session->get(AppTwoFactorAuthenticator::TIMEOUT_SESSION_KEY) > time()
         ) {
             $passport->getBadge(TwoFactorTimeoutBadge::class)->markResolved();
-
         }
     }
 }

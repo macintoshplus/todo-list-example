@@ -46,6 +46,5 @@ final class TwoFactorMaxAttemptBadgeSubscriber implements EventSubscriberInterfa
             $passport->getBadge(TwoFactorMaxAttemptBadge::class)->markResolved();
 
         }
-        dump($passport);
     }
 }
