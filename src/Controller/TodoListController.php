@@ -24,7 +24,7 @@ final class TodoListController extends AbstractController
     public function index(TodoListRepository $todoListRepository): Response
     {
         return $this->render('todo_list/index.html.twig', [
-            'todo_lists' => $todoListRepository->findAll(['user' => $this->getUser()]),
+            'todo_lists' => $todoListRepository->findBy(['user' => $this->getUser()]),
         ]);
     }
 
