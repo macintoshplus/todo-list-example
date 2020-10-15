@@ -22,6 +22,7 @@
         <span class="navbar-text">
       {% if app.user %}
       <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_logout') }}">Logout</a>
+      <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_user_key_register') }}">Add Security Key</a>
       {% else %}
           <a class="btn btn-sm btn-outline-info" href="{{ path('app_login') }}">Login</a>
           <a class="btn btn-sm btn-outline-info" href="{{ path('app_registration_signin') }}">Sign in</a>

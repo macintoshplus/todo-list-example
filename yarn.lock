@@ -889,6 +889,11 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.4.tgz#15925414e0ad2cd765bfef58842f7e26a7accb24"
   integrity sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==
 
+"@web-auth/webauthn-helper@^0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@web-auth/webauthn-helper/-/webauthn-helper-0.0.13.tgz#2e9e6f421a3238bee233fe97c6801a6c6354cf7b"
+  integrity sha512-yEXWTiZSGFYnCVEwOqWgZFrQ4MiW9WGAiAvdRD6NQRlp7sr39THZiGIix/x3y3zmnsUsZZ0iXQA8zG/gPESwzQ==
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"

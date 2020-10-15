@@ -42,7 +42,14 @@ To define the password, use this command to encode it : `bin/console security:en
 Run this command in a console (caution, the console will be busy):
 
 ```shell script
+$ symfony server:ca:install
 $ symfony serve
+```
+
+Add this entry into your `/etc/hosts` file: 
+
+```
+127.0.0.1 example.com
 ```
 
 Open the link in your favorite web browser.

@@ -12,6 +12,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
+use Ramsey\Uuid\Uuid;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,7 +38,7 @@ class SigninController
         Environment $twig,
         EncoderFactoryInterface $encoderFactory
     ) {
-        $user = new User();
+        $user = new User(Uuid::uuid4()->toString());
         $form = $formFactory->create(UserType::class, $user);
 
         $form->handleRequest($request);

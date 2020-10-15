@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Repository\UserKeyRepository;
 use App\Security\AppTwoFactorAuthenticator;
 use App\Security\CodeGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,8 +35,13 @@ final class SecurityController extends AbstractController
     /**
      * @Route("/two_factor", name="app_two_factor")
      */
-    public function twoFactor(SessionInterface $session, CodeGeneratorInterface $codeGenerator, AuthenticationUtils $authenticationUtils): Response
+    public function twoFactor(SessionInterface $session, CodeGeneratorInterface $codeGenerator, AuthenticationUtils $authenticationUtils, UserKeyRepository $userKeyRepository): Response
     {
+        $username = $authenticationUtils->getLastUsername();
+        $keyuser = $userKeyRepository->find($username);
+        if ($keyuser) {
+            return $this->twoFactorKey($username);
+        }
         $error = $authenticationUtils->getLastAuthenticationError();
         if ($session->get(AppTwoFactorAuthenticator::CODE_SESSION_KEY) === null) {
             $error = null;
@@ -45,6 +51,11 @@ final class SecurityController extends AbstractController
         }
 
         return $this->render('security/two_factor.html.twig', ['error' => $error]);
+    }
+
+    public function twoFactorKey(string $username)
+    {
+        return $this->render('security/two_factor_key.html.twig', ['username'=>$username]);
     }
 
     /**

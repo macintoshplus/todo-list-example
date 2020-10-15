@@ -1,0 +1,4 @@
+webauthn_routes:
+#    prefix: /api
+    resource: .
+    type: webauthn

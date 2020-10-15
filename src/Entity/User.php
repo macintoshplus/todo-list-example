@@ -20,12 +20,11 @@ use Symfony\Component\Validator\Constraints as Assert;
 class User implements UserInterface
 {
     /**
-     * @var null|int
+     * @var string
      * @ORM\Id()
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     * @ORM\Column(type="integer", nullable=false)
+     * @ORM\Column(type="string",length=255, nullable=false)
      */
-    private $id;
+    protected $id;
 
     /**
      * @var null|string
@@ -44,23 +43,25 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="json")
+     */
+    protected $roles;
+
+    /**
      * @ORM\OneToMany(targetEntity="App\Entity\TodoList", mappedBy="user", orphanRemoval=true)
      */
     private $todoLists;
 
-    public function __construct()
+    public function __construct(string $id, array $roles = [])
     {
         $this->todoLists = new ArrayCollection();
+        $this->roles = $roles;
+        $this->id = $id;
     }
 
     public function __toString()
     {
-        return (string) $this->email;
-    }
-
-    public function getId(): ?int
-    {
-        return $this->id;
+        return (string)$this->email;
     }
 
     public function getEmail(): ?string
@@ -78,7 +79,7 @@ class User implements UserInterface
      */
     public function getRoles()
     {
-        return ['ROLE_USER'];
+        return array_unique($this->roles + ['ROLE_USER']);
     }
 
     /**

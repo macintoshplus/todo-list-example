@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h3>Demande d'enregistrement en cours...</h3>
+<span id="user_info" data-name="{{ user.username }}" data-display="{{ user.username }}"></span>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{{ encore_entry_script_tags('registration') }}
+{% endblock %}

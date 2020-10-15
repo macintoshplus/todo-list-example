@@ -13,6 +13,14 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            webauthn:
+                user_provider: security.user.provider.concrete.db
+                registration:
+                    enabled: true
+                authentication:
+                    routes:
+                        options_path: /security/authentication/options
+                        result_path: /security/authentication/login
             anonymous: lazy
             provider: db
             guard:
@@ -34,7 +42,7 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        - { path: ^/(login|two_factor|signin), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(login|two_factor|signin|register|security/authentication), roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/, roles: ROLE_USER }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
