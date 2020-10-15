@@ -59,3 +59,11 @@ Open the link in your favorite web browser.
 The login uses a two-factor authentication. When your browser is redirected to code form (after username/password form) read the dump value in the Symfony debug bar.
 This code is the two-factor code.
 
+# Double Auth With Key TODO
+
+* [x] Register a key.
+* [x] Use key for 2nd factor if a key is registred.
+* [ ] Add another security key
+* [ ] Remove security key
+* [ ] Fallback on code if key auth fail
+* [ ] Merge User and UserKey entity
