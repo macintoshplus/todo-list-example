@@ -8,17 +8,15 @@ declare(strict_types=1);
 
 namespace App\Security\Badge;
 
-
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\BadgeInterface;
 
 final class TwoFactorBadge implements BadgeInterface
 {
-
     private $resolved = false;
 
     public function markResolved(): void
     {
-        $this->resolved=true;
+        $this->resolved = true;
     }
 
     public function isResolved(): bool

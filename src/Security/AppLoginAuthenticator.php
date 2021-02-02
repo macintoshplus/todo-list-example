@@ -63,7 +63,6 @@ final class AppLoginAuthenticator extends AbstractLoginFormAuthenticator
         return new RedirectResponse('/');
     }
 
-
     public function authenticate(Request $request): PassportInterface
     {
         $email = $request->get('email');

@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Security\Listener;
 
-
 use App\Security\AppTwoFactorAuthenticator;
 use App\Security\Badge\TwoFactorCredentials;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -31,7 +30,7 @@ final class TwoFactorCredentialSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            CheckPassportEvent::class => ['checkCredential', 0]
+            CheckPassportEvent::class => ['checkCredential', 0],
         ];
     }
 
@@ -45,11 +44,13 @@ final class TwoFactorCredentialSubscriber implements EventSubscriberInterface
         $badge = $passport->getBadge(TwoFactorCredentials::class);
         if ($badge->getPassword() === $this->session->get(AppTwoFactorAuthenticator::CODE_SESSION_KEY, null)) {
             $badge->markResolved();
+
             return;
         }
 
-        $this->session->set(AppTwoFactorAuthenticator::COUNT_SESSION_KEY,
-            $this->session->get(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 0) + 1);
-
+        $this->session->set(
+            AppTwoFactorAuthenticator::COUNT_SESSION_KEY,
+            $this->session->get(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 0) + 1
+        );
     }
 }

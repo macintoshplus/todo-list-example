@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Security\Listener;
 
-
 use App\Security\AppTwoFactorAuthenticator;
 use App\Security\Badge\TwoFactorTimeoutBadge;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -31,7 +30,7 @@ final class TwoFactorTimeoutBadgeSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            CheckPassportEvent::class => ['resolveBadge', 10]
+            CheckPassportEvent::class => ['resolveBadge', 10],
         ];
     }
 

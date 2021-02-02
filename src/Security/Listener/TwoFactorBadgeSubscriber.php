@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Security\Listener;
 
-
 use App\Security\Badge\TwoFactorBadge;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -42,7 +41,7 @@ final class TwoFactorBadgeSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            CheckPassportEvent::class => ['resolveBadge', -10]
+            CheckPassportEvent::class => ['resolveBadge', -10],
         ];
     }
 }

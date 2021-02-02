@@ -45,8 +45,7 @@ final class AppTwoFactorAuthenticator extends AbstractLoginFormAuthenticator
     public function __construct(
         UserRepository $userRepository,
         UrlGeneratorInterface $urlGenerator
-    )
-    {
+    ) {
         $this->urlGenerator = $urlGenerator;
         $this->userRepository = $userRepository;
     }
@@ -81,7 +80,7 @@ final class AppTwoFactorAuthenticator extends AbstractLoginFormAuthenticator
             $email
         );
         $request->getSession()->set(
-            AppTwoFactorAuthenticator::USER_SESSION_KEY,
+            self::USER_SESSION_KEY,
             $email
         );
         if (!$user) {
@@ -90,10 +89,9 @@ final class AppTwoFactorAuthenticator extends AbstractLoginFormAuthenticator
 
         return new Passport($user, new TwoFactorCredentials($request->get('password')), [
             // and CSRF protection using a "csrf_token" field
-            new CsrfTokenBadge('authenticate', $request->get('_csrf_token')),
+            new CsrfTokenBadge('authenticate-2fa', $request->get('_csrf_token')),
             new TwoFactorTimeoutBadge(),
             new TwoFactorMaxAttemptBadge(),
-
         ]);
     }
 

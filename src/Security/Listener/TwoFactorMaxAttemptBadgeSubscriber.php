@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Security\Listener;
 
-
 use App\Security\AppTwoFactorAuthenticator;
 use App\Security\Badge\TwoFactorMaxAttemptBadge;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -31,7 +30,7 @@ final class TwoFactorMaxAttemptBadgeSubscriber implements EventSubscriberInterfa
     public static function getSubscribedEvents()
     {
         return [
-            CheckPassportEvent::class => ['resolveBadge', -10]
+            CheckPassportEvent::class => ['resolveBadge', -10],
         ];
     }
 
@@ -44,7 +43,6 @@ final class TwoFactorMaxAttemptBadgeSubscriber implements EventSubscriberInterfa
             $this->session->get(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 0) < 3
         ) {
             $passport->getBadge(TwoFactorMaxAttemptBadge::class)->markResolved();
-
         }
     }
 }

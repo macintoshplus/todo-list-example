@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace App\Security\Badge;
 
-
 use Symfony\Component\Security\Core\Exception\LogicException;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\CredentialsInterface;
 
