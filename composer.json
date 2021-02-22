@@ -38,6 +38,7 @@
         "friends-of-behat/mink-extension": "^2.4",
         "friends-of-behat/page-object-extension": "^0.3.1",
         "friends-of-behat/symfony-extension": "^2.0",
+        "macintoshplus/behat-lambdatest-extension": "dev-main",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",

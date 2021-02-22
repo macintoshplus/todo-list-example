@@ -3,7 +3,7 @@ Fonctionnalité: Connexion à l'application
 
   Contexte:
     Etant donné que l'utilisateur "todo@me.fr" est enregsitré avec le mot de passe "MonSuperPassWord"
-
+  @javascript
   Scénario: Connexion
     Etant donné que je suis sur la page de connexion
     Lorsque je me connecte en tant que "todo@me.fr" avec le mot de passe "MonSuperPassWord"

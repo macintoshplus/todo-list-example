@@ -10,9 +10,23 @@ default:
 
     extensions:
         Behat\MinkExtension:
-            base_url: "https://localhost/"
+            base_url: "http://localhost:8000/"
             default_session: symfony
+            lambdatest:
+                wd_host: https://hub.lambdatest.com/wd/hub # The URL of Selenium2 Hub
+                browser: firefox # The browser name
+                capabilities:
+                    marionette: true
+                    extra_capabilities:
+                        resolution: 1920x1080
+                        platform: windows10
+                        browserName: firefox
+                        version: latest
+                        #If you need use the Lambdatest tunnel
+                        tunnel: true
+                        tunnelName: test_tunnel
             sessions:
                 symfony:
                     symfony: ~
         FriendsOfBehat\SymfonyExtension: null
+        Macintoshplus\Lambdatest\LambdatestExtension: ~

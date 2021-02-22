@@ -52,6 +52,7 @@ This code is the two-factor code.
 Open a terminal and run their command after the install step :
 
 ```shell script
+$ APP_ENV=test bin/console doctrine:database:create
 $ APP_ENV=test bin/console doctrine:migration:migrate
 $ vendor/bin/behat
 ```
