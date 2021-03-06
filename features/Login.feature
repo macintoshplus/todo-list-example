@@ -2,7 +2,7 @@
 Fonctionnalité: Connexion à l'application
 
   Contexte:
-    Etant donné que l'utilisateur "todo@me.fr" est enregsitré avec le mot de passe "MonSuperPassWord"
+    Etant donné que l'utilisateur "todo@me.fr" est enregistré avec le mot de passe "MonSuperPassWord"
 
   Scénario: Connexion
     Etant donné que je suis sur la page de connexion

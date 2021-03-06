@@ -32,7 +32,7 @@ class UserContext implements Context
 
     /**
      * @Given the user :email is registred with the password :password
-     * @Given /^l'utilisateur "([^"]+)" est enregsitré avec le mot de passe "([^"]+)"$/
+     * @Given /^l'utilisateur "([^"]+)" est enregistré avec le mot de passe "([^"]+)"$/
      *
      * @param mixed $email
      * @param mixed $password
