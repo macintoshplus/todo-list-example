@@ -1,4 +1,5 @@
 #language: fr
+@javascript
 Fonctionnalité: Connexion à l'application
 
   Contexte:

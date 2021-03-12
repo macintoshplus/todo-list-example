@@ -9,10 +9,16 @@ default:
                 - App\Tests\Functional\Context\TodoList\IndexContext
 
     extensions:
+        DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
         Behat\MinkExtension:
-            base_url: "https://localhost/"
+            base_url: "https://127.0.0.1:8000/"
+            javascript_session: chrome_headless
             default_session: symfony
             sessions:
+                chrome_headless:
+                    chrome:
+                        api_url: "http://127.0.0.1:9222"
+                        validate_certificate: false
                 symfony:
                     symfony: ~
         FriendsOfBehat\SymfonyExtension: null
