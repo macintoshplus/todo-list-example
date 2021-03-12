@@ -22,6 +22,6 @@ class LoginPage extends SymfonyPage
         $this->open();
         $this->getDocument()->fillField('email', $user);
         $this->getDocument()->fillField('password', $password);
-        $this->getDocument()->pressButton('Sign in');
+        $this->getDocument()->find('css', 'button.btn-primary[type=submit]')->press();
     }
 }
