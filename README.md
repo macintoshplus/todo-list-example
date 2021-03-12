@@ -1,6 +1,11 @@
 Todo List : Project to demonstrate
 ==================================
 
+The branch [behat](https://github.com/macintoshplus/todo-list-example/tree/behat) is used to demonstrate the 
+usage of Behat with Symfony Page ([[Tutoriel] Test Behat sur un projet Symfony [FR]](https://nahan.fr/tutoriel-test-behat-sur-un-projet-symfony/)).
+
+The branch [symfony_510](https://github.com/macintoshplus/todo-list-example/tree/symfony_510) is used to demonstrate the new implementation of the Symfony Security component ([Double authentification et Symfony 5.1 [FR]](https://nahan.fr/double-authentification-et-symfony-5-1/)). 
+
 # Requirements
 
 * Symfony client
@@ -22,7 +27,11 @@ $ yarn encore dev
 
 # Initialize database
 
+On the first install, run this command to make a new database: `bin/console doctrine:database:create`
+
 Run all migration to initialize the database (the database is already configured to use SQLite)
+
+> Note: if you have a database from the v1.0.0 run this command: `bin/console doctrine:migrations:sync-metadata-storage`.
 
 ```shell script
 $ bin/console doctrine:migration:migrate
