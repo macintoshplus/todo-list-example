@@ -24,4 +24,13 @@ class LoginPage extends SymfonyPage
         $this->getDocument()->fillField('password', $password);
         $this->getDocument()->find('css', 'button.btn-primary[type=submit]')->press();
     }
+
+    public function clickOnMenuLink(string $link)
+    {
+        $navbar = $this->getDocument()->find('css', '.navbar-text');
+        if ($navbar === null) {
+            throw new \Exception("Unable to locate navbar button");
+        }
+        $navbar->clickLink($link);
+    }
 }

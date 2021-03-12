@@ -7,6 +7,7 @@ default:
                 - App\Tests\Functional\Context\LoginContext
                 - App\Tests\Functional\Context\TwoFactorContext
                 - App\Tests\Functional\Context\TodoList\IndexContext
+                - App\Tests\Functional\Context\RegisterContext
 
     extensions:
         DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~

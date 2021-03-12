@@ -41,4 +41,20 @@ class LoginContext implements Context
     {
         $this->loginPage->login($email, $password);
     }
+
+    /**
+     * @When /^je clique sur le lien "([^"]*)" du menu$/
+     */
+    public function jeCliqueSurLeLienDuMenu(string $link)
+    {
+        $this->loginPage->clickOnMenuLink($link);
+    }
+
+    /**
+     * @Then je dois être sur la page de login
+     */
+    public function jeDoisÊtreSurLaPageDeLogin()
+    {
+        $this->loginPage->verify();
+    }
 }
