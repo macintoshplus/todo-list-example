@@ -27,7 +27,11 @@ $ yarn encore dev
 
 # Initialize database
 
+On the first install, run this command to make a new database: `bin/console doctrine:database:create`
+
 Run all migration to initialize the database (the database is already configured to use SQLite)
+
+> Note: if you have a database from the v1.0.0 run this command: `bin/console doctrine:migrations:sync-metadata-storage`.
 
 ```shell script
 $ bin/console doctrine:migration:migrate
