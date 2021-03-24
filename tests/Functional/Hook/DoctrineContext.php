@@ -23,7 +23,7 @@ class DoctrineContext implements Context
     }
 
     /**
-     * @BeforeScenario
+     * @#BeforeScenario
      */
     public function purgeDatabase()
     {
