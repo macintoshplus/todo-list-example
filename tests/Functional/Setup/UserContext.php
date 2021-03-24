@@ -39,10 +39,10 @@ class UserContext implements Context
      */
     public function registerUser($email, $password)
     {
-        $user = new User();
-        $user->setEmail($email);
-        $user->setPassword($this->encoderFactory->getEncoder($user)->encodePassword($password, null));
-        $this->objectManager->persist($user);
-        $this->objectManager->flush();
+//        $user = new User();
+//        $user->setEmail($email);
+//        $user->setPassword($this->encoderFactory->getEncoder($user)->encodePassword($password, null));
+//        $this->objectManager->persist($user);
+//        $this->objectManager->flush();
     }
 }
