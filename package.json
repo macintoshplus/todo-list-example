@@ -5,7 +5,8 @@
         "is-svg": "^4.2.2",
         "regenerator-runtime": "^0.13.2",
         "ssri": "^8.0.1",
-        "webpack-notifier": "^1.6.0"
+        "webpack-notifier": "^1.6.0",
+        "postcss": "^8.2.15"
     },
     "license": "UNLICENSED",
     "private": true,
