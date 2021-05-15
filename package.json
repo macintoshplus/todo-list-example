@@ -3,6 +3,7 @@
         "@symfony/webpack-encore": "^0.28.3",
         "core-js": "^3.0.0",
         "is-svg": "^4.2.2",
+        "postcss": "^8.2.15",
         "regenerator-runtime": "^0.13.2",
         "ssri": "^8.0.1",
         "webpack-notifier": "^1.6.0"
