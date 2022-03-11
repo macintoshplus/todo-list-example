@@ -6,7 +6,7 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
-    encoders:
+    password_hashers:
         App\Entity\User: auto
 
     firewalls:

@@ -12,23 +12,22 @@ namespace App\Security\Listener;
 use App\Security\AppTwoFactorAuthenticator;
 use App\Security\Badge\TwoFactorCredentials;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Event\CheckPassportEvent;
 
 final class TwoFactorCredentialSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var SessionInterface
-     */
-    private $session;
 
-    public function __construct(SessionInterface $session)
+    private RequestStack $requestStack;
+
+    public function __construct(RequestStack $requestStack)
     {
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             CheckPassportEvent::class => ['checkCredential', 0]
@@ -43,13 +42,13 @@ final class TwoFactorCredentialSubscriber implements EventSubscriberInterface
             return;
         }
         $badge = $passport->getBadge(TwoFactorCredentials::class);
-        if ($badge->getPassword() === $this->session->get(AppTwoFactorAuthenticator::CODE_SESSION_KEY, null)) {
+        if ($badge->getPassword() === $this->requestStack->getSession()->get(AppTwoFactorAuthenticator::CODE_SESSION_KEY, null)) {
             $badge->markResolved();
             return;
         }
 
-        $this->session->set(AppTwoFactorAuthenticator::COUNT_SESSION_KEY,
-            $this->session->get(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 0) + 1);
+        $this->requestStack->getSession()->set(AppTwoFactorAuthenticator::COUNT_SESSION_KEY,
+            $this->requestStack->getSession()->get(AppTwoFactorAuthenticator::COUNT_SESSION_KEY, 0) + 1);
 
     }
 }
