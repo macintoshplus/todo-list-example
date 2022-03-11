@@ -74,7 +74,7 @@ final class AppTwoFactorAuthenticator extends AbstractLoginFormAuthenticator
         return new RedirectResponse('/');
     }
 
-    public function authenticate(Request $request): PassportInterface
+    public function authenticate(Request $request): Passport
     {
         $email = $request->getSession()->get(self::USER_SESSION_KEY);
         $request->getSession()->set(

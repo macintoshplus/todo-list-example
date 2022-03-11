@@ -433,9 +433,6 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.15.0"
     },
-    "symfony/polyfill-php73": {
-        "version": "v1.15.0"
-    },
     "symfony/polyfill-php80": {
         "version": "v1.25.0"
     },
@@ -484,9 +481,6 @@
         "version": "v5.0.7"
     },
     "symfony/security-csrf": {
-        "version": "v5.0.7"
-    },
-    "symfony/security-guard": {
         "version": "v5.0.7"
     },
     "symfony/security-http": {
