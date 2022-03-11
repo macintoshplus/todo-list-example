@@ -7,8 +7,8 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @method null|User find($id, $lockMode = null, $lockVersion = null)
@@ -23,7 +23,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         parent::__construct($registry, User::class);
     }
 
-    public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
+    public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newEncodedPassword): void
     {
         /** @var User $user */
         $user->setPassword($newEncodedPassword);

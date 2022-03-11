@@ -65,7 +65,7 @@ final class AppLoginAuthenticator extends AbstractLoginFormAuthenticator
     }
 
 
-    public function authenticate(Request $request): PassportInterface
+    public function authenticate(Request $request): Passport
     {
         $email = $request->get('email');
         $request->getSession()->set(
