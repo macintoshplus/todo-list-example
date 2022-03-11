@@ -11,6 +11,7 @@ namespace App\Security\Listener;
 
 use App\Security\Badge\TwoFactorBadge;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
@@ -18,14 +19,11 @@ use Symfony\Component\Security\Http\Event\CheckPassportEvent;
 
 final class TwoFactorBadgeSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var SessionInterface
-     */
-    private $session;
+    private RequestStack $requestStack;
 
-    public function __construct(SessionInterface $session)
+    public function __construct(RequestStack $requestStack)
     {
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
     public function resolveBadge(CheckPassportEvent $event)
@@ -35,11 +33,11 @@ final class TwoFactorBadgeSubscriber implements EventSubscriberInterface
 
         // Here I can check if the user has the two factor authentication enabled
         if ($passport->hasBadge(TwoFactorBadge::class) && $passport->hasBadge(PasswordCredentials::class) && $passport->getBadge(PasswordCredentials::class)->isResolved()) {
-            $this->session->set('need_auth_two', true);
+            $this->requestStack->getSession()->set('need_auth_two', true);
         }
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             CheckPassportEvent::class => ['resolveBadge', -10]

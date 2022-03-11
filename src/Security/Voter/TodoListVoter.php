@@ -17,13 +17,13 @@ final class TodoListVoter extends Voter
     const DELETE = 'LIST_DELETE';
     const ADD_TASK = 'LIST_ADD_TASK';
 
-    protected function supports($attribute, $subject)
+    protected function supports($attribute, $subject): bool
     {
         return \in_array($attribute, [self::ADD, self::EDIT, self::VIEW, self::DELETE, self::ADD_TASK], true)
             && $subject instanceof TodoList;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
         $user = $token->getUser();
         // if the user is anonymous, do not grant access

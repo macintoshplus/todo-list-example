@@ -12,23 +12,22 @@ namespace App\Security\Listener;
 use App\Security\AppTwoFactorAuthenticator;
 use App\Security\Badge\TwoFactorTimeoutBadge;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Event\CheckPassportEvent;
 
 final class TwoFactorTimeoutBadgeSubscriber implements EventSubscriberInterface
 {
-    /**
-     * @var SessionInterface
-     */
-    private $session;
 
-    public function __construct(SessionInterface $session)
+    private RequestStack $requestStack;
+
+    public function __construct(RequestStack $requestStack)
     {
-        $this->session = $session;
+        $this->requestStack = $requestStack;
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             CheckPassportEvent::class => ['resolveBadge', 10]
@@ -41,7 +40,7 @@ final class TwoFactorTimeoutBadgeSubscriber implements EventSubscriberInterface
         $passport = $event->getPassport();
         if (
             $passport->hasBadge(TwoFactorTimeoutBadge::class) &&
-            $this->session->get(AppTwoFactorAuthenticator::TIMEOUT_SESSION_KEY) > time()
+            $this->requestStack->getSession()->get(AppTwoFactorAuthenticator::TIMEOUT_SESSION_KEY) > time()
         ) {
             $passport->getBadge(TwoFactorTimeoutBadge::class)->markResolved();
         }
